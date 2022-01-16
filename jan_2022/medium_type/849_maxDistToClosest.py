@@ -14,9 +14,5 @@ class Solution:
             if seats[i] == 0:
                 r_to_l[i] = r_to_l[i + 1] + 1
 
-        res = float('-inf')
-        for i in range(len(seats)):
-            temp = min(l_to_r[i], r_to_l[i])
-            res = max(temp, res)
-
-        return res
+        return max(min(l_to_r[i], r_to_l[i])
+                   for i, seat in enumerate(seats) if not seat)
